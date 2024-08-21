@@ -15,7 +15,7 @@ $\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
 [![code](https://img.shields.io/badge/code-page-brightgreen)](https://github.com/qimaqi/ShapeSplats-Gaussian-MAE.git)
 
 
-# News
+## News
 - [x] `21.08.2024`: The Paper is released on [Arxiv](https://arxiv.org/pdf/2408.10906)
 - [x] `20.08.2024`: The [project Page](https://scholar.google.com/citations?user=l_5rfO4AAAAJ&hl=en) is released!
 - [ ] Code coming soon
