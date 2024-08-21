@@ -1,7 +1,7 @@
 # ShapeSplat-Gaussian-MAE
 The Offical implementation of work: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining
 
-#### [Qi Ma <sup>1,2</sup>$^\star$](https://scholar.google.com/citations?user=l_5rfO4AAAAJ&hl=en&oi=ao), [Yue Li <sup>3</sup>$^\star$](https://unique1i.github.io/), [Bin Ren <sup>2,4,5</sup>$^\dagger$](https://amazingren.github.io/), [Nicu Sebe <sup>5</sup>](https://scholar.google.com/citations?user=stFCYOAAAAAJ&hl=en), [Ender Konukoglu <sup>1</sup>](https://people.ee.ethz.ch/~kender/), [Theo Gevers <sup>2,4,5</sup>](https://scholar.google.com/citations?user=yqsvxQgAAAAJ&hl=en&oi=ao), [Luc Van Gool <sup>3,4</sup>](https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en), and [Danda Pani Paudel<sup>3,4</sup>](https://people.ee.ethz.ch/~paudeld/) 
+#### [Qi Ma](https://scholar.google.com/citations?user=l_5rfO4AAAAJ&hl=en&oi=ao)<sup>1,2</sup>$^\star$, [Yue Li](https://unique1i.github.io/)<sup>3</sup>$^\star$, [Bin Ren](https://amazingren.github.io/)<sup>2,4,5</sup>$^\dagger$, [Nicu Sebe](https://scholar.google.com/citations?user=stFCYOAAAAAJ&hl=en)<sup>5</sup>, [Ender Konukoglu](https://people.ee.ethz.ch/~kender/) <sup>1</sup>, [Theo Gevers](https://scholar.google.com/citations?user=yqsvxQgAAAAJ&hl=en&oi=ao)<sup>3</sup>, [Luc Van Gool ](https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en)<sup>1,2</sup>, and [Danda Pani Paudel](https://people.ee.ethz.ch/~paudeld/)<sup>1,2</sup> 
 $\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
 
 <sup>1</sup> ETH Zürich, Switzerland <br>
