@@ -1,7 +1,13 @@
 # ShapeSplat-Gaussian-MAE
-The Offical implementation of work: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining
 
-#### [Qi Ma](https://scholar.google.com/citations?user=l_5rfO4AAAAJ&hl=en&oi=ao)<sup>1,2</sup>$^\star$, [Yue Li](https://unique1i.github.io/)<sup>3</sup>$^\star$, [Bin Ren](https://amazingren.github.io/)<sup>2,4,5</sup>$^\dagger$, [Nicu Sebe](https://scholar.google.com/citations?user=stFCYOAAAAAJ&hl=en)<sup>5</sup>, [Ender Konukoglu](https://people.ee.ethz.ch/~kender/) <sup>1</sup>, [Theo Gevers](https://scholar.google.com/citations?user=yqsvxQgAAAAJ&hl=en&oi=ao)<sup>3</sup>, [Luc Van Gool ](https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en)<sup>1,2</sup>, and [Danda Pani Paudel](https://scholar.google.com/citations?user=W43pvPkAAAAJ&hl=en)<sup>1,2</sup> 
+<p align="left">
+    <video src="media/shapesplat_demo.mp4" autoplay muted loop style="width:100%; max-width:1200px;">
+    </video>
+</p>
+
+The offical implementation of our work: <strong>ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining</strong>.
+
+#### $^\star$[Qi Ma](https://qimaqi.github.io/)<sup>1,2</sup>, $^\star$[Yue Li](https://unique1i.github.io/)<sup>3</sup>, $^\dagger$[Bin Ren](https://amazingren.github.io/)<sup>2,4,5</sup>, [Nicu Sebe](https://scholar.google.com/citations?user=stFCYOAAAAAJ&hl=en)<sup>5</sup>, [Ender Konukoglu](https://people.ee.ethz.ch/~kender/) <sup>1</sup>, [Theo Gevers](https://scholar.google.com/citations?user=yqsvxQgAAAAJ&hl=en&oi=ao)<sup>3</sup>, [Luc Van Gool ](https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en)<sup>1,2</sup>, and [Danda Pani Paudel](https://scholar.google.com/citations?user=W43pvPkAAAAJ&hl=en)<sup>1,2</sup> 
 $\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
 
 <sup>1</sup> ETH Zürich, Switzerland <br>
@@ -10,20 +16,28 @@ $\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
 <sup>4</sup> University of Pisa, Italy <br>
 <sup>5</sup> University of Trento, Italy <br>
 
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2408.10906)
-[![project](https://img.shields.io/badge/project-page-brightgreen)](https://unique1i.github.io/ShapeSplat/)
-[![code](https://img.shields.io/badge/code-page-brightgreen)](https://github.com/qimaqi/ShapeSplats-Gaussian-MAE.git)
+<p><strong style="vertical-align: middle;"></strong>
+    <a href="https://arxiv.org/abs/2408.10906" target="_blank" style="text-decoration: none; vertical-align: middle;">
+        <img src="https://img.shields.io/badge/arXiv-2408.10906-blue?logo=arxiv&color=%23B31B1B" alt="arXiv Link" style="vertical-align: middle;">
+    </a>
+    <a href="https://unique1i.github.io/ShapeSplat/" target="_blank"       style="text-decoration: none; vertical-align: middle;">
+        <img src="https://img.shields.io/badge/ShapeSplat-Project Page-red?logo=globe" alt="Project Page" style="vertical-align: middle;">
+    </a>
+</p>
 
 
 ## News
-- [x] `21.08.2024`: The Paper is released on [Arxiv](https://arxiv.org/pdf/2408.10906)
-- [x] `20.08.2024`: The [project Page](https://scholar.google.com/citations?user=l_5rfO4AAAAJ&hl=en) is released!
-- [ ] Code coming soon
+- [x] `20.08.2024`: The [Project Page](https://unique1i.github.io/ShapeSplat/) is released!
+- [x] `21.08.2024`: The Paper is released on [Arxiv](https://arxiv.org/pdf/2408.10906).
 - [ ] Dataset release: We are actively discussing this detail with the ShapeNet team and provide an update as soon as possible. Stay tuned! 
+- [ ] Code release
 
 
 ## Method
-<br>
+
+<p align="left">
+    <img src="media/framework.png" alt="Method Framework" style="width:100%; max-width:1200px;">
+</p>
 <details>
   <summary>
   <font size="+1">Abstract</font>
@@ -36,8 +50,8 @@ We utilize our dataset for unsupervised pretraining and supervised finetuning fo
   <summary>
   <font size="+1">中文摘要</font>
   </summary>
-3D高斯光栅化（3DGS）已成为许多视觉任务中3D表示的事实标准。这需要在这种表示空间中直接进行3D理解。为推动该方向的研究，我们首先使用常用的ShapeNet和ModelNet数据集构建了一个大规模的3DGS数据集。我们的数据集ShapeSplat包含来自87个独特类别的65K个对象，其标签与各自的数据集保持一致。创建该数据集使用了相当于2个GPU年（在TITAN XP GPU上）的计算量。
-我们利用这个数据集进行无监督预训练和有监督微调，以用于分类和分割任务。为此，我们引入了Gaussian-MAE，突出了从高斯参数进行表示学习的独特优势。通过详尽的实验，我们提供了几个有价值的见解。特别是，我们展示了：（1）优化后的GS中心的分布与均匀采样的点云（用于初始化）相比有显著差异；（2）这种分布变化在仅使用中心时导致分类任务的性能下降，但分割任务的性能提升；（3）为了利用额外的高斯参数，我们提出了在归一化特征空间中进行高斯特征分组，并结合散点池化层，提供了一种有效分组和嵌入相似高斯的定制解决方案，从而在微调任务中显著提升了性能。
+3D高斯溅射（3DGS）已成为许多视觉任务中的3D表征。目前的研究没有涉及到对高斯参数本身的自监督式理解。为推动该方向的研究，我们首先使用常用的ShapeNet和ModelNet数据集构建了一个大规模的3DGS数据集。我们的数据集ShapeSplat包含来自87个独特类别的65K个对象，其标签与各自的数据集保持一致。创建该数据集使用了相当于2个GPU年（在TITAN XP GPU上）的计算量。
+我们利用这个数据集进行无监督预训练和有监督微调，以用于分类和分割任务。为此，我们引入了Gaussian-MAE，突出了从高斯参数进行表示学习的独特优势。通过详尽的实验，我们提供了几个有价值的见解。特别是，我们展示了：（1）优化后的GS中心的分布与用于初始化的均匀采样的点云相比有显著差异；（2）这种分布变化在仅使用中心时导致分类任务的性能下降，但分割任务的性能提升；（3）为有效利用高斯参数，我们提出了在归一化特征空间中进行高斯特征分组，并结合高斯池化层，提供了针对相似高斯的有效分组和提取特征的方案，从而在微调任务中显著提升了性能。
 </details>
 
 
@@ -51,8 +65,10 @@ We utilize our dataset for unsupervised pretraining and supervised finetuning fo
 ## Citation
 
 If you find our work helpful, please consider citing the following paper and/or ⭐ the repo.
-```
-@misc{ma2024shapesplatlargescaledatasetgaussian,
+<div style="max-width: 1200px; overflow-x: auto;">
+<pre>
+<code>
+@misc{ma2024shapesplat,
       title={ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining}, 
       author={Qi Ma and Yue Li and Bin Ren and Nicu Sebe and Ender Konukoglu and Theo Gevers and Luc Van Gool and Danda Pani Paudel},
       year={2024},
@@ -61,8 +77,9 @@ If you find our work helpful, please consider citing the following paper and/or 
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2408.10906}, 
 }
-```
+</code>
+</pre>
+</div>
 
 ## Acknowledgements
 
-...
