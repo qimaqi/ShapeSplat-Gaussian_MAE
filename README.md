@@ -7,7 +7,7 @@
 The offical implementation of our work: <strong>ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining</strong>.
 
 #### $^\star$[Qi Ma](https://qimaqi.github.io/)<sup>1,2</sup>, $^\star$[Yue Li](https://unique1i.github.io/)<sup>3</sup>, $^\dagger$[Bin Ren](https://amazingren.github.io/)<sup>2,4,5</sup>, [Nicu Sebe](https://scholar.google.com/citations?user=stFCYOAAAAAJ&hl=en)<sup>5</sup>, [Ender Konukoglu](https://people.ee.ethz.ch/~kender/) <sup>1</sup>, [Theo Gevers](https://scholar.google.com/citations?user=yqsvxQgAAAAJ&hl=en&oi=ao)<sup>3</sup>, [Luc Van Gool ](https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en)<sup>1,2</sup>, and [Danda Pani Paudel](https://scholar.google.com/citations?user=W43pvPkAAAAJ&hl=en)<sup>1,2</sup> 
-$\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
+$^\star$: Equal Contribution, $^\dagger$: Corresponding Author <br>
 
 <sup>1</sup> ETH Zürich, Switzerland <br>
 <sup>2</sup> INSAIT Sofia University, Bulgaria <br>
@@ -18,8 +18,9 @@ $\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
 <p><strong style="vertical-align: middle;"></strong>
     <a href="https://arxiv.org/abs/2408.10906" target="_blank" style="text-decoration: none; vertical-align: middle;">
         <img src="https://img.shields.io/badge/arXiv-2408.10906-blue?logo=arxiv&color=%23B31B1B" alt="arXiv Link" style="vertical-align: middle;">
-    </a><a href="https://unique1i.github.io/ShapeSplat/" target="_blank"       style="text-decoration: none; vertical-align: middle;">
-        <img src="https://img.shields.io/badge/ShapeSplat-Project Page-red?logo=globe" alt="Project Page" style="vertical-align: middle;">
+    </a><!--
+    --><a href="https://unique1i.github.io/ShapeSplat/" target="_blank" style="text-decoration: none; vertical-align: middle;">
+        <img src="https://img.shields.io/badge/ShapeSplat-Project%20Page-red?logo=globe" alt="Project Page" style="vertical-align: middle;">
     </a>
 </p>
 
