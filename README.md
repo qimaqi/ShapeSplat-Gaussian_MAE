@@ -1,8 +1,7 @@
 # ShapeSplat-Gaussian-MAE
 
 <p align="left">
-    <video src="media/shapesplat_demo.mp4" autoplay muted loop style="width:100%; max-width:1200px;">
-    </video>
+    <img src="media/demo.jpg" alt="ShapeSplat Demo" style="width:100%; max-width:1200px;">
 </p>
 
 The offical implementation of our work: <strong>ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining</strong>.
@@ -19,8 +18,7 @@ $\star$: Equal Contribution, $\dagger$: Corresponding Author <br>
 <p><strong style="vertical-align: middle;"></strong>
     <a href="https://arxiv.org/abs/2408.10906" target="_blank" style="text-decoration: none; vertical-align: middle;">
         <img src="https://img.shields.io/badge/arXiv-2408.10906-blue?logo=arxiv&color=%23B31B1B" alt="arXiv Link" style="vertical-align: middle;">
-    </a>
-    <a href="https://unique1i.github.io/ShapeSplat/" target="_blank"       style="text-decoration: none; vertical-align: middle;">
+    </a><a href="https://unique1i.github.io/ShapeSplat/" target="_blank"       style="text-decoration: none; vertical-align: middle;">
         <img src="https://img.shields.io/badge/ShapeSplat-Project Page-red?logo=globe" alt="Project Page" style="vertical-align: middle;">
     </a>
 </p>
