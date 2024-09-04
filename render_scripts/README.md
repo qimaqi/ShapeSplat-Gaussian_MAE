@@ -78,9 +78,7 @@ With render output and modified dataset_readers.py you can start training the Sh
 ## Citation
 
 If you find our work helpful, please consider citing the following paper and/or ⭐ the repo.
-<div style="max-width: 1200px; overflow-x: auto;">
-<pre>
-<code>
+```bib
 @misc{ma2024shapesplat,
       title={ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining}, 
       author={Qi Ma and Yue Li and Bin Ren and Nicu Sebe and Ender Konukoglu and Theo Gevers and Luc Van Gool and Danda Pani Paudel},
@@ -127,10 +125,7 @@ If you find our work helpful, please consider citing the following paper and/or 
  
 }
 
-
-</code>
-</pre>
-</div>
+```
 
 ## Acknowledgements
 
