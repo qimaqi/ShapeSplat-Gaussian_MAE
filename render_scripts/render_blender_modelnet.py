@@ -7,7 +7,6 @@
 
 import argparse, sys, os, json
 import copy 
-# import trimesh 
 
 parser = argparse.ArgumentParser(description='Renders given obj file by rotation a camera around it.')
 parser.add_argument('--views', type=int, default=1,

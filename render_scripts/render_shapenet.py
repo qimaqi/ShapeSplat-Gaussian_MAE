@@ -26,7 +26,6 @@ render_root_dir = FLAGS.render_root_dir
 
 def gen_obj(model_root_dir, cat_id, obj_id):
 	t_start = time.time()
-	print("Start %s %s" % (cat_id, obj_id))
 	if FLAGS.shapenetversion == "v2":
 		objpath = os.path.join(model_root_dir, cat_id, obj_id, "models", "model_normalized.obj")
 	else:
@@ -78,15 +77,15 @@ def gen_obj(model_root_dir, cat_id, obj_id):
 		print("Finished %s %s"%(cat_id, obj_id), time.time()-t_start)
 
 
-with open('shapnetv1_output.json', 'r') as f:
-    shapenet_v1_dict = json.load(f)
+with open(FLAGS.file_dict_path, 'r') as f:
+    data_dict = json.load(f)
 
 model_root_dir_lst = []
 cat_id_lst = []
 obj_id_lst = []
-for cat_id in shapenet_v1_dict.keys():
+for cat_id in data_dict.keys():
 	lst = []
-	for obj_id in shapenet_v1_dict[cat_id]:
+	for obj_id in data_dict[cat_id]:
 		lst.append(obj_id)
 	model_root_dir_i = [model_root_dir for i in range(len(lst))]
 	cat_id_lst_i = [cat_id for i in range(len(lst))]

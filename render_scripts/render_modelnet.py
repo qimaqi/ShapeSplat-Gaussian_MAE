@@ -4,10 +4,8 @@ import time
 # from joblib import Parallel, delayed
 import argparse
 import trimesh 
-from plyfile import PlyData, PlyElement
 import json 
 import zipfile
-from glob import glob
 import numpy as np 
 from io import BytesIO
 from PIL import Image
@@ -48,7 +46,7 @@ def transform_mesh_axes(mesh):
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_root_dir', type=str, default='./ModelNet40/')
-parser.add_argument('--render_root_dir', type=str, default='./ModelNet40/blender_render/')
+parser.add_argument('--render_root_dir', type=str, default='./ModelNet40/render/')
 parser.add_argument('--file_dict_path', type=str, default="./modelnet_data_dict.json")
 parser.add_argument('--start_idx', type=int, default=0, 
                 help='start scene you want to train.')
@@ -153,18 +151,18 @@ def gen_obj(model_root_dir, cat_id, split_i, obj_id):
 		print("Finished %s %s"%(cat_id, obj_id), time.time()-t_start)
 #
 
-with open('modelnet_all_dict.json', 'r') as f:
-    shapenet_v1_dict = json.load(f)
+with open(FLAGS.file_dict_path, 'r') as f:
+    data_dict = json.load(f)
 
 model_root_dir_lst = []
 cat_id_lst = []
 split_lst_all = []
 obj_id_lst = []
-for cat_id in shapenet_v1_dict.keys():
+for cat_id in data_dict.keys():
 	lst = []
 	split_lst = []
-	for split_i in shapenet_v1_dict[cat_id]:
-		for obj_id in shapenet_v1_dict[cat_id][split_i]:
+	for split_i in data_dict[cat_id]:
+		for obj_id in data_dict[cat_id][split_i]:
 			lst.append(obj_id)
 			split_lst.append(split_i)		
 
