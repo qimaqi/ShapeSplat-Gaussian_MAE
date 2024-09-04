@@ -33,10 +33,19 @@ After preparing the blender and dataset, we can start rendering CAD Models to im
 ```
 # for ShapeNetv2
 
-python3 render_shapenet.py --start_idx=0 --end_idx=1 --model_root_dir=./ShapeNet/ --render_root_dir=./ShapeNet/render/ --blender_location=./blender_install/blender-3.6.13-linux-x64/blender --shapenetversion=v2
+python3 render_shapenet.py --start_idx=0 
+        --end_idx=1 --model_root_dir=./ShapeNet/ 
+        --render_root_dir=./ShapeNet/render/ 
+        --blender_location=./blender_install/blender-3.6.13-linux-x64/blender 
+        --shapenetversion=v2
 
 # for ModelNet40
-python3 render_modelnet.py --start_idx=0 --end_idx=1 --model_root_dir=./ModelNet40 --render_root_dir=./ModelNet40/render/ --blender_location=./blender_install/blender-3.6.13-linux-x64/blender
+python3 render_modelnet.py 
+        --start_idx=0 
+        --end_idx=1 
+        --model_root_dir=./ModelNet40 
+        --render_root_dir=./ModelNet40/render/ 
+        --blender_location=./blender_install/blender-3.6.13-linux-x64/blender
 
 
 ```
@@ -54,7 +63,16 @@ The render output format will be :
 │   ├──.......
 ├──.......
 ```
-Note that the train use 72 views and validation and test is seleced for last 4 views from train views. You can adjust the views sampling in by modifying variable *vertical_list* in render_blender.py and the data split.
+
+Note that the train use 72 views and validation and test is seleced for last 4 views from train views. You can adjust the sampling views in by modifying variable *vertical_list* in render_blender.py and the data split.
+
+Unlike other methods that process NeRF synthetic data by using random initialization for the Gaussian, we saved the **point_cloud.obj** file from CAD and used it for initialization. This approach ensures faster convergence and higher accuracy in Gaussian rasterization.
+
+In order to use such initialization, you only need to simply replace the dataset_readers.py in most gs-splat object with the one we provide here. The difference is we add another function **fetchObj** and read images from .zip files .
+
+With render output and modified dataset_readers.py you can start training the ShapeNet and ModelNet or other CAD models efficiently.
+
+
 
 
 ## Citation
@@ -70,8 +88,9 @@ If you find our work helpful, please consider citing the following paper and/or 
       eprint={2408.10906},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2408.10906}, 
+      url={https://arxiv.org/abs/2408.10906}
 }
+
 
 @article{chang2015shapenet,
   title={Shapenet: An information-rich 3d model repository},
@@ -79,6 +98,7 @@ If you find our work helpful, please consider citing the following paper and/or 
   journal={arXiv preprint arXiv:1512.03012},
   year={2015}
 }
+
 
 @inproceedings{wu20153d,
   title={3d shapenets: A deep representation for volumetric shapes},
@@ -88,6 +108,7 @@ If you find our work helpful, please consider citing the following paper and/or 
   year={2015}
 }
 
+
 @article{xu2019disn,
   title={Disn: Deep implicit surface network for high-quality single-view 3d reconstruction},
   author={Xu, Qiangeng and Wang, Weiyue and Ceylan, Duygu and Mech, Radomir and Neumann, Ulrich},
@@ -96,11 +117,14 @@ If you find our work helpful, please consider citing the following paper and/or 
   year={2019}
 }
 
+
 @inproceedings{mildenhall2020nerf,
  title={NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis},
  author={Ben Mildenhall and Pratul P. Srinivasan and Matthew Tancik and Jonathan T. Barron and Ravi Ramamoorthi and Ren Ng},
  year={2020},
  booktitle={ECCV},
+
+ 
 }
 
 
