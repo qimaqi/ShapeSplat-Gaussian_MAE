@@ -23,7 +23,7 @@ $^\star$: Equal Contribution, $^\dagger$: Corresponding Author <br>
 ## News
 - [x] `20.08.2024`: The [Project Page](https://unique1i.github.io/ShapeSplat/) is released!
 - [x] `21.08.2024`: The Paper is released on [Arxiv](https://arxiv.org/pdf/2408.10906).
-- [x] `05.09.2024`: Our ShapeSplat [dataset](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1) is released under the official ShapeNet repository! We thank the support from the ShapeNet team!
+- [x] `05.09.2024`: Our ShapeSplat [dataset](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1) part is released under the official ShapeNet repository! We thank the support from the ShapeNet team!
 - [ ] Code release
 
 
@@ -71,22 +71,22 @@ If you find our work helpful, please consider citing the following papers and/or
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2408.10906}, 
 }
-
-\
-@techreport{shapenet2015,
-  title       = {{ShapeNet: An Information-Rich 3D Model Repository}},
-  author      = {Chang, Angel X. and Funkhouser, Thomas and Guibas, Leonidas and Hanrahan, Pat and Huang, Qixing and Li, Zimo and Savarese, Silvio and Savva, Manolis and Song, Shuran and Su, Hao and Xiao, Jianxiong and Yi, Li and Yu, Fisher},
-  number      = {arXiv:1512.03012 [cs.GR]},
-  institution = {Stanford University --- Princeton University --- Toyota Technological Institute at Chicago},
-  year        = {2015}
+</code>
+<code>
+@article{chang2015shapenet,
+      title={Shapenet: An information-rich 3d model repository},
+      author={Chang, Angel X and Funkhouser, Thomas and Guibas, Leonidas and Hanrahan, Pat and Huang, Qixing and Li, Zimo and Savarese, Silvio and Savva, Manolis and Song, Shuran and Su, Hao and others},
+      journal={arXiv preprint arXiv:1512.03012},
+      year={2015}
 }
-\
+</code>
+<code>
 @inproceedings{wu20153d,
-  title={3d shapenets: A deep representation for volumetric shapes},
-  author={Wu, Zhirong and Song, Shuran and Khosla, Aditya and Yu, Fisher and Zhang, Linguang and Tang, Xiaoou and Xiao, Jianxiong},
-  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
-  pages={1912--1920},
-  year={2015}
+      title={3d shapenets: A deep representation for volumetric shapes},
+      author={Wu, Zhirong and Song, Shuran and Khosla, Aditya and Yu, Fisher and Zhang, Linguang and Tang, Xiaoou and Xiao, Jianxiong},
+      booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+      pages={1912--1920},
+      year={2015}
 }
 </code>
 </pre>
