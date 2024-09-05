@@ -15,20 +15,15 @@ $^\star$: Equal Contribution, $^\dagger$: Corresponding Author <br>
 <sup>4</sup> University of Pisa, Italy <br>
 <sup>5</sup> University of Trento, Italy <br>
 
-<p><strong style="vertical-align: middle;"></strong>
-    <a href="https://arxiv.org/abs/2408.10906" target="_blank" style="text-decoration: none; vertical-align: middle;">
-        <img src="https://img.shields.io/badge/arXiv-2408.10906-blue?logo=arxiv&color=%23B31B1B" alt="arXiv Link" style="vertical-align: middle;">
-    </a><!--
-    --><a href="https://unique1i.github.io/ShapeSplat/" target="_blank" style="text-decoration: none; vertical-align: middle;">
-        <img src="https://img.shields.io/badge/ShapeSplat-Project%20Page-red?logo=globe" alt="Project Page" style="vertical-align: middle;">
-    </a>
-</p>
+[![arXiv](https://img.shields.io/badge/arXiv-2408.10906-blue?logo=arxiv&color=%23B31B1B)](https://arxiv.org/abs/2408.10906)
+[![ShapeSplat Project Page](https://img.shields.io/badge/ShapeSplat-Project%20Page-red?logo=globe)](https://unique1i.github.io/ShapeSplat/)
+[![ShapeSplat Dataset Release](https://img.shields.io/badge/ShapeSplat-Dataset%20Release-blue?logo=globe)](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1)
 
 
 ## News
 - [x] `20.08.2024`: The [Project Page](https://unique1i.github.io/ShapeSplat/) is released!
 - [x] `21.08.2024`: The Paper is released on [Arxiv](https://arxiv.org/pdf/2408.10906).
-- [ ] Dataset release: We are actively discussing this detail with the ShapeNet team and provide an update as soon as possible. Stay tuned! 
+- [x] `05.09.2024`: Our ShapeSplat [dataset](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1) is released under the official ShapeNet repository! We thank the support from the ShapeNet team!
 - [ ] Code release
 
 
@@ -63,7 +58,7 @@ We utilize our dataset for unsupervised pretraining and supervised finetuning fo
 
 ## Citation
 
-If you find our work helpful, please consider citing the following paper and/or ⭐ the repo.
+If you find our work helpful, please consider citing the following papers and/or ⭐ our repo.
 <div style="max-width: 1200px; overflow-x: auto;">
 <pre>
 <code>
@@ -76,9 +71,26 @@ If you find our work helpful, please consider citing the following paper and/or 
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2408.10906}, 
 }
+
+\
+@techreport{shapenet2015,
+  title       = {{ShapeNet: An Information-Rich 3D Model Repository}},
+  author      = {Chang, Angel X. and Funkhouser, Thomas and Guibas, Leonidas and Hanrahan, Pat and Huang, Qixing and Li, Zimo and Savarese, Silvio and Savva, Manolis and Song, Shuran and Su, Hao and Xiao, Jianxiong and Yi, Li and Yu, Fisher},
+  number      = {arXiv:1512.03012 [cs.GR]},
+  institution = {Stanford University --- Princeton University --- Toyota Technological Institute at Chicago},
+  year        = {2015}
+}
+\
+@inproceedings{wu20153d,
+  title={3d shapenets: A deep representation for volumetric shapes},
+  author={Wu, Zhirong and Song, Shuran and Khosla, Aditya and Yu, Fisher and Zhang, Linguang and Tang, Xiaoou and Xiao, Jianxiong},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={1912--1920},
+  year={2015}
+}
 </code>
 </pre>
 </div>
 
 ## Acknowledgements
-
+We sincerely thank the ShapeNet and ModelNet teams for their efforts in creating and open-sourcing the datasets.  
