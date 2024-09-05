@@ -4,7 +4,7 @@ In this part we show how to render CAD model to images and corresponding poses f
 ## Installation
 We use blender to render CAD model to images. Following blender install [instruction](https://www.blender.org/download/lts/3-6/), we use blender 3.6.13. You can install by
 ```sh
-cd ./blender_install # or change to your prefer location
+mkdir ./blender_install && cd ./blender_install # or change to your prefer location
 wget https://www.blender.org/download/release/Blender3.6/blender-3.6.13-linux-x64.tar.xz
 
 tar -xvf blender-3.6.13-linux-x64.tar.xz
