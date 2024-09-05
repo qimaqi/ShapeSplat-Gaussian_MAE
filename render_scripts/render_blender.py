@@ -5,11 +5,19 @@
 # blender --background --python mytest.py -- --views 10 /path/to/my.obj
 #
 
-import argparse, sys, os, json
-import copy 
-# import trimesh 
+import shutil
+from math import radians
+import bpy
+import numpy as np
+import argparse
+import sys
+import os
+import json
+import copy
+# import trimesh
 
-parser = argparse.ArgumentParser(description='Renders given obj file by rotation a camera around it.')
+parser = argparse.ArgumentParser(
+    description='Renders given obj file by rotation a camera around it.')
 parser.add_argument('--views', type=int, default=1,
                     help='number of views to be rendered')
 parser.add_argument('obj', type=str,
@@ -32,17 +40,15 @@ argv = sys.argv[sys.argv.index("--") + 1:]
 args = parser.parse_args(argv)
 
 
-import numpy as np
-import bpy
-import cv2
-
-
 print("start rendering")
+
+
 def listify_matrix(matrix):
     matrix_list = []
     for row in matrix:
         matrix_list.append(list(row))
     return matrix_list
+
 
 # Set up rendering of depth map using nodes
 bpy.context.scene.use_nodes = True
@@ -88,7 +94,8 @@ bpy.ops.object.select_all(action='DESELECT')
 bpy.ops.object.select_by_type(type='MESH')
 bpy.ops.object.delete()
 imported_obj = bpy.ops.import_scene.obj(filepath=args.obj)
-obj_object = bpy.context.selected_objects[0]  # Assumes imported obj has one main object
+# Assumes imported obj has one main object
+obj_object = bpy.context.selected_objects[0]
 # Reset object's location
 obj_object.location = (0, 0, 0)
 bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
@@ -117,7 +124,6 @@ bpy.context.collection.objects.link(light_object)
 light_object.location = (3, 3, 5)
 
 
-
 # Render settings
 def parent_obj_to_camera(b_camera):
     origin = (0, 0, 0)
@@ -130,6 +136,7 @@ def parent_obj_to_camera(b_camera):
     bpy.context.view_layer.objects.active = b_empty
     # scn.objects.active = b_empty
     return b_empty
+
 
 def camera_info(param):
     "params: [theta, phi, rho, x, y, z, f]"
@@ -144,19 +151,14 @@ def camera_info(param):
     cam_pos = np.array([camX, camY, camZ])
 
     axisZ = cam_pos.copy()
-    axisY = np.array([0,1,0])
+    axisY = np.array([0, 1, 0])
     axisX = np.cross(axisY, axisZ)
     # axisY = np.cross(axisZ, axisX)
 
     # cam_mat = np.array([unit(axisX), unit(axisY), unit(axisZ)])
-    print("cam axis",camX, camY, camZ)
+    print("cam axis", camX, camY, camZ)
     return camX, -camZ, camY
 
-def check_valid(file):
-    img = cv2.imread(file, cv2.IMREAD_UNCHANGED)
-    if np.sum(img[:,0,3]) + np.sum(img[:,-1,3]) + np.sum(img[0,:,3]) + np.sum(img[-1,:,3]) < 600:
-        return True
-    return False
 
 scene = bpy.context.scene
 scene.render.resolution_x = 400
@@ -195,16 +197,15 @@ cam_constraint.target = b_empty
 
 scene.render.image_settings.file_format = 'PNG'  # set output format to .png
 
-from math import radians
 
 stepsize = 360.0 / args.views
 # to make the output reproduce, we fix seed and generate vertical difference at beginning
-CIRCLE_FIXED_START = (0,0,0)
-CIRCLE_FIXED_END =  (0.7,0,0)
+CIRCLE_FIXED_START = (0, 0, 0)
+CIRCLE_FIXED_END = (0.7, 0, 0)
 # random vertical
 np.random.seed(42)
 # vertical_list = np.random.rand(args.views) *  np.pi - np.pi / 4 # upper and down views
-vertical_list =  np.random.rand(args.views) *  np.pi/4 # most upper views
+vertical_list = np.random.rand(args.views) * np.pi/4  # most upper views
 
 vertical_diff = CIRCLE_FIXED_END[0] - CIRCLE_FIXED_START[0]
 # print("vertical_list", vertical_list)
@@ -213,7 +214,7 @@ rotation_mode = 'XYZ'
 
 obj_save_dir = args.obj_save_dir
 
-# TODO easy and hard 
+# TODO easy and hard
 
 out_data['frames'] = []
 b_empty.rotation_euler = CIRCLE_FIXED_START
@@ -227,7 +228,7 @@ current_rot_value = 0
 for i in range(args.views):
     # current_rot_value += stepsize
     # counter = 0
-    # # while True: # 
+    # # while True: #
     # counter+=1
     # angle_rand = np.random.rand(3)
     # y_rot = current_rot_value + angle_rand[0] * 10 - 5
@@ -241,11 +242,10 @@ for i in range(args.views):
     scene.render.filepath = obj_save_dir + '/image/' + str(i).zfill(3)
 
     tree.nodes['Depth Output'].file_slots[0].path = "/depth/" + str(i).zfill(3)
-    tree.nodes['Normal Output'].file_slots[0].path =  "/normal/" + str(i).zfill(3)
+    tree.nodes['Normal Output'].file_slots[0].path = "/normal/" + \
+        str(i).zfill(3)
 
     bpy.ops.render.render(write_still=True)  # render still
-
-
 
     frame_data = {
         'file_path': 'image/' + str(i).zfill(3),
@@ -263,27 +263,30 @@ for i in range(args.views):
     b_empty.rotation_euler[2] += radians(stepsize)
 
 
-with open(obj_save_dir+ '/' + 'transforms_train.json', 'w') as out_file:
+with open(obj_save_dir + '/' + 'transforms_train.json', 'w') as out_file:
     json.dump(out_data, out_file, indent=4)
 
 
 test_json = copy.deepcopy(out_data)
 test_json['frames'] = test_json['frames'][-4:]
 
-with open(os.path.join(obj_save_dir,'transforms_test.json'), 'w') as f:
-    json.dump(test_json, f, indent=4) 
+with open(os.path.join(obj_save_dir, 'transforms_test.json'), 'w') as f:
+    json.dump(test_json, f, indent=4)
 
-with open(os.path.join(obj_save_dir,'transforms_val.json'), 'w') as f:
-    json.dump(test_json, f, indent=4) 
+with open(os.path.join(obj_save_dir, 'transforms_val.json'), 'w') as f:
+    json.dump(test_json, f, indent=4)
 
 
 # zip image file, depth files and normals
-import shutil
-shutil.make_archive(os.path.join(obj_save_dir,'image'), 'zip', os.path.join(obj_save_dir,'image'))
-shutil.make_archive(os.path.join(obj_save_dir,'depth'), 'zip', os.path.join(obj_save_dir,'depth'))
-shutil.make_archive(os.path.join(obj_save_dir,'normal'), 'zip', os.path.join(obj_save_dir,'normal'))
+print("zip image file, depth files and normals")
+shutil.make_archive(os.path.join(obj_save_dir, 'image'),
+                    'zip', os.path.join(obj_save_dir, 'image'))
+shutil.make_archive(os.path.join(obj_save_dir, 'depth'),
+                    'zip', os.path.join(obj_save_dir, 'depth'))
+shutil.make_archive(os.path.join(obj_save_dir, 'normal'),
+                    'zip', os.path.join(obj_save_dir, 'normal'))
 
-shutil.rmtree(os.path.join(obj_save_dir,'image'))
-shutil.rmtree(os.path.join(obj_save_dir,'depth'))
-shutil.rmtree(os.path.join(obj_save_dir,'normal'))
+shutil.rmtree(os.path.join(obj_save_dir, 'image'))
+shutil.rmtree(os.path.join(obj_save_dir, 'depth'))
+shutil.rmtree(os.path.join(obj_save_dir, 'normal'))
 # print("vertical_list", vertical_list)

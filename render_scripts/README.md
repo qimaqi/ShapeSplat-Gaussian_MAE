@@ -33,19 +33,10 @@ After preparing the blender and dataset, we can start rendering CAD Models to im
 ```
 # for ShapeNetv2
 
-python3 render_shapenet.py --start_idx=0 
-        --end_idx=1 --model_root_dir=./ShapeNet/ 
-        --render_root_dir=./ShapeNet/render/ 
-        --blender_location=./blender_install/blender-3.6.13-linux-x64/blender 
-        --shapenetversion=v2
+python3 render_shapenet.py --start_idx=0 --end_idx=1 --model_root_dir=./ShapeNet --render_root_dir=./ShapeNet/render --blender_location=./blender_install/blender-3.6.13-linux-x64/blender --shapenetversion=v2
 
 # for ModelNet40
-python3 render_modelnet.py 
-        --start_idx=0 
-        --end_idx=1 
-        --model_root_dir=./ModelNet40 
-        --render_root_dir=./ModelNet40/render/ 
-        --blender_location=./blender_install/blender-3.6.13-linux-x64/blender
+python3 render_modelnet.py --start_idx=0 --end_idx=1 --model_root_dir=./ModelNet40 --render_root_dir=./ModelNet40/render/ --blender_location=./blender_install/blender-3.6.13-linux-x64/blender
 
 
 ```
