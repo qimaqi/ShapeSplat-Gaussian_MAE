@@ -51,7 +51,53 @@ We utilize our dataset for unsupervised pretraining and supervised finetuning fo
 
 
 ## Datasets
+You can Download the large scale pretrain dataset ShapeSplats in the  official ShapeNet [repository] [dataset](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1).Due to file size limitations, some of the synsets may be split into multiple zip files (e.g. 03001627_0.zip and 03001627_1.zip). You can unzip data and merge them by using the [unzip.sh](scripts/unzip.sh): 
 
+```python
+This ply format is commonly used for Gaussian splats and can be viewed using [online viewer](https://playcanvas.com/supersplat/editor/),you need load the ply file using <u>numpy</u> and <u>plyfile</u>.
+```python
+from plyfile import PlyData
+import numpy as np
+gs_vertex = PlyData.read('ply_path')['vertex']
+### load centroids[x,y,z] - Gaussian centroid
+x = gs_vertex['x'].astype(np.float32)
+y = gs_vertex['y'].astype(np.float32)
+z = gs_vertex['z'].astype(np.float32)
+centroids = np.stack((x, y, z), axis=-1) # [n, 3]
+
+### load o - opacity
+opacity = gs_vertex['opacity'].astype(np.float32).reshape(-1, 1)
+
+
+### load scales[sx, sy, sz] - Scale
+scale_names = [
+    p.name
+    for p in gs_vertex.properties
+    if p.name.startswith("scale_")
+]
+scale_names = sorted(scale_names, key=lambda x: int(x.split("_")[-1]))
+scales = np.zeros((centroids.shape[0], len(scale_names)))
+for idx, attr_name in enumerate(scale_names):
+    scales[:, idx] = gs_vertex[attr_name].astype(np.float32)
+
+### load rotation rots[q_0, q_1, q_2, q_3] - Rotation
+rot_names = [
+    p.name for p in gs_vertex.properties if p.name.startswith("rot")
+]
+rot_names = sorted(rot_names, key=lambda x: int(x.split("_")[-1]))
+rots = np.zeros((centroids.shape[0], len(rot_names)))
+for idx, attr_name in enumerate(rot_names):
+    rots[:, idx] = gs_vertex[attr_name].astype(np.float32)
+
+rots = rots / (np.linalg.norm(rots, axis=1, keepdims=True) + 1e-9)
+
+### load base sh_base[dc_0, dc_1, dc_2] - Spherical harmonic
+sh_base = np.zeros((centroids.shape[0], 3, 1))
+sh_base[:, 0, 0] = gs_vertex['f_dc_0'].astype(np.float32)
+sh_base[:, 1, 0] = gs_vertex['f_dc_1'].astype(np.float32)
+sh_base[:, 2, 0] = gs_vertex['f_dc_2'].astype(np.float32)
+sh_base = sh_base.reshape(-1, 3)
+```
 
 ## Installation
 
