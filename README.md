@@ -51,7 +51,7 @@ We utilize our dataset for unsupervised pretraining and supervised finetuning fo
 
 
 ## Datasets
-You can Download the large scale pretrain dataset ShapeSplats in the  official ShapeNet [repository] [dataset](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1).Due to file size limitations, some of the synsets may be split into multiple zip files (e.g. 03001627_0.zip and 03001627_1.zip). You can unzip data and merge them by using the [unzip.sh](scripts/unzip.sh): 
+You can Download the large scale pretrain dataset ShapeSplats in the  official ShapeNet [repository](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1).Due to file size limitations, some of the synsets may be split into multiple zip files (e.g. 03001627_0.zip and 03001627_1.zip). You can unzip data and merge them by using the [unzip.sh](scripts/unzip.sh): 
 
 ```python
 This ply format is commonly used for Gaussian splats and can be viewed using [online viewer](https://playcanvas.com/supersplat/editor/),you need load the ply file using <u>numpy</u> and <u>plyfile</u>.
