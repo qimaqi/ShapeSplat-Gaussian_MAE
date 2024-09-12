@@ -25,6 +25,7 @@ $^\star$: Equal Contribution, $^\dagger$: Corresponding Author <br>
 - [x] `21.08.2024`: The Paper is released on [Arxiv](https://arxiv.org/pdf/2408.10906).
 - [x] `05.09.2024`: Our ShapeSplat [dataset](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1) part is released under the official ShapeNet repository! We thank the support from the ShapeNet team!
 - [x] `05.09.2024`: Dataset rendering code release in [render_scripts](./render_scripts)
+- [x] `08.09.2024`: The ModelNet-Splats is released on [Huggingface](https://huggingface.co/datasets/ShapeSplats/ModelNet_Splats). Please follow the ModelNet [term of use](https://modelnet.cs.princeton.edu/#).
 - [ ] Code release
 
 
