@@ -18,7 +18,7 @@ $^\star$: Equal Contribution, $^\dagger$: Corresponding Author <br>
 [![arXiv](https://img.shields.io/badge/arXiv-2408.10906-blue?logo=arxiv&color=%23B31B1B)](https://arxiv.org/abs/2408.10906)
 [![ShapeSplat Project Page](https://img.shields.io/badge/ShapeSplat-Project%20Page-red?logo=globe)](https://unique1i.github.io/ShapeSplat/)
 [![ShapeSplat Dataset Release](https://img.shields.io/badge/ShapeSplat-Dataset%20Release-blue?logo=globe)](https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1)
-[![ModelNetSplats Dataset Release](https://img.shields.io/badge/ModelNetSplats-Dataset%20Release-blue?logo=globe)]([https://huggingface.co/datasets/ShapeNet/ShapeSplatsV1](https://huggingface.co/datasets/ShapeSplats/ModelNet_Splats))
+[![ModelNetSplats Dataset Release](https://img.shields.io/badge/ModelNetSplats-Dataset%20Release-blue?logo=globe)](https://huggingface.co/datasets/ShapeSplats/ModelNet_Splats)
 
 
 ## News
